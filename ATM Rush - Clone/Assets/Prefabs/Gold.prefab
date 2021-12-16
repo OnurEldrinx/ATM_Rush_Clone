@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4878948406694984625}
   - component: {fileID: 4878948406694984629}
   m_Layer: 0
-  m_Name: Collectable
+  m_Name: Gold
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0156173422778d04c9fe75c3be4e714c, type: 2}
+  - {fileID: 2100000, guid: 65b68357ea2047547a45a7367c0dcb42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCollected: 0
-  type: 5
+  type: 10

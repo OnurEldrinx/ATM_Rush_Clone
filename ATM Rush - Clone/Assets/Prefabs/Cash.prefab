@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4878948406694984625}
   - component: {fileID: 4878948406694984629}
   m_Layer: 0
-  m_Name: Collectable
+  m_Name: Cash
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

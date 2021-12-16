@@ -7,11 +7,11 @@ public class Stack : MonoBehaviour
 
     public static Stack Instance;
 
+    public Material[] materials;
 
     [SerializeField] private Transform previous;
     [SerializeField] private Transform parent;
     private BoxCollider parentCollider;
-    private Collider previousCollider;
 
     public List<Transform> collectedObjects;
     public List<Transform> activeObjects;
@@ -19,7 +19,6 @@ public class Stack : MonoBehaviour
     public Transform Parent { get => parent; set => parent = value; }
     public BoxCollider ParentCollider { get => parentCollider; set => parentCollider = value; }
     public Transform Previous { get => previous; set => previous = value; }
-    public Transform Parent1 { get => parent; set => parent = value; }
 
     private void Awake()
     {
@@ -71,6 +70,27 @@ public class Stack : MonoBehaviour
             other.GetComponent<Collectable>().isCollected = true;
 
             collectedObjects.Add(other.transform);
+
+            switch (other.GetComponent<MeshRenderer>().sharedMaterial.name)
+            {
+
+                case "Cash":
+
+                    other.GetComponent<Collectable>().type = Collectable.CollectableTypes.Cash;
+                    break;
+
+                case "Gold":
+
+                    other.GetComponent<Collectable>().type = Collectable.CollectableTypes.Gold;
+                    break;
+
+                case "Diamond":
+
+                    other.GetComponent<Collectable>().type = Collectable.CollectableTypes.Diamond;
+                    break;
+
+
+            }
 
         }
 

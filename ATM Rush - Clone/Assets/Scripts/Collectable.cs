@@ -6,6 +6,18 @@ public class Collectable : MonoBehaviour
 {
 
     public bool isCollected;
+    public static int price;
+    public CollectableTypes type;
+
+    public enum CollectableTypes
+    {
+
+        Cash = 5,
+        Gold = 10,
+        Diamond = 15
+
+
+    }
 
     // Start is called before the first frame update
     void Start()
