@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Stack : MonoBehaviour
 {
@@ -45,9 +46,32 @@ public class Stack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+
+        if (collectedObjects.Count > 0)
+        {
+
+            WavyMovement();
+
+
+        }
+
+    }
+
+    public void WavyMovement()
+    {
+
+        for (int i = collectedObjects.Count-1;i>1;i--)
+        {
+
+            collectedObjects[i].DOMoveX(collectedObjects[i-1].transform.position.x,0.1f);
+
+        }
+
         
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,6 +79,10 @@ public class Stack : MonoBehaviour
         
         if(other.tag == "Collectable")
         {
+
+            Transform jumper = other.transform;
+
+            jumper.DOShakeScale(0.5f,Vector3.up * 2f,20,50,true).SetEase(Ease.InOutSine);
 
             other.GetComponent<Collider>().enabled = false;
 
@@ -70,6 +98,8 @@ public class Stack : MonoBehaviour
             other.GetComponent<Collectable>().isCollected = true;
 
             collectedObjects.Add(other.transform);
+
+            
 
             switch (other.GetComponent<MeshRenderer>().sharedMaterial.name)
             {
