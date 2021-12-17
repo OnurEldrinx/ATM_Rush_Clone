@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - ATM
   - Converter
+  - Collector
   layers:
   - Default
   - TransparentFX

@@ -31,8 +31,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!GameManager.Instance.isGameOver)
+            Move();
 
-        Move();
+
+        
 
     }
 
@@ -40,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
 
         
-
+        
         AutoMoveForward();
 
         Vector2 inputVector = PlayerInputs.Player.Movement.ReadValue<Vector2>();
