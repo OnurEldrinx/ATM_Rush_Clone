@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Finish : MonoBehaviour
 {
@@ -67,17 +68,20 @@ public class Finish : MonoBehaviour
         else if (other.tag == "Collectable")
         {
 
-            int index = Stack.Instance.collectedObjects.IndexOf(other.transform);
+            other.GetComponent<BoxCollider>().enabled = false;
 
-            other.gameObject.SetActive(false);
+            other.transform.parent = GameObject.Find("Finish Parent").transform;
+
+            other.transform.DOLocalMoveX(-18, 3);
+
 
             Stack.Instance.collectedObjects.Remove(other.transform);
 
             ATM.counter += ((int)other.GetComponent<Collectable>().type);
 
+            Destroy(other.gameObject, 3);
+
             
-
-
         }
         else if (other.tag == "Collector")
         {
@@ -90,5 +94,7 @@ public class Finish : MonoBehaviour
     }
 
     
+
+
 
 }

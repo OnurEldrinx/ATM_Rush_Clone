@@ -24,6 +24,8 @@ public class Stack : MonoBehaviour
     private void Awake()
     {
 
+        DOTween.SetTweensCapacity(1250, 50);
+
         if (Instance == null)
         {
 
@@ -62,10 +64,23 @@ public class Stack : MonoBehaviour
     public void WavyMovement()
     {
 
-        for (int i = collectedObjects.Count-1;i>1;i--)
+        for (int i = collectedObjects.Count-1;i>=0;i--)
         {
 
-            collectedObjects[i].DOMoveX(collectedObjects[i-1].transform.position.x,0.1f);
+
+            if (i == 0)
+            {
+
+                collectedObjects[i].DOMoveX(GameObject.Find("Collector").transform.position.x, 0.1f);
+
+            }
+            else
+            {
+
+                collectedObjects[i].DOMoveX(collectedObjects[i - 1].transform.position.x, 0.1f);
+
+            }
+
 
         }
 
