@@ -9,7 +9,7 @@ public class Finish : MonoBehaviour
 
     [SerializeField] private GameObject materialHolder;
 
-    private float speed = 0.5f;
+    private float speed = 0.1f;
     private new Renderer renderer;
     private float offset;
     public static int score;
@@ -41,7 +41,7 @@ public class Finish : MonoBehaviour
     {
 
         offset = speed * Time.time;
-        renderer.material.SetTextureOffset("_MainTex", new Vector2(-offset, 0));
+        renderer.material.SetTextureOffset("_MainTex", new Vector2(0, offset));
 
     }
 
@@ -71,6 +71,8 @@ public class Finish : MonoBehaviour
             other.GetComponent<BoxCollider>().enabled = false;
 
             other.transform.parent = GameObject.Find("Finish Parent").transform;
+
+            other.transform.DOLocalMoveZ(0,0.1f);
 
             other.transform.DOLocalMoveX(-18, 3);
 

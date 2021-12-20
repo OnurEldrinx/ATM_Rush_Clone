@@ -59,6 +59,17 @@ public class Stack : MonoBehaviour
 
         }
 
+        for(int i = 0; i < collectedObjects.Count; i++)
+        {
+
+            if (!collectedObjects[i].gameObject.activeSelf)
+            {
+
+                collectedObjects.RemoveAt(i);
+            }
+
+        }
+
     }
 
     public void WavyMovement()
@@ -119,7 +130,7 @@ public class Stack : MonoBehaviour
             switch (other.GetComponent<MeshRenderer>().sharedMaterial.name)
             {
 
-                case "Cash":
+                case "Money":
 
                     other.GetComponent<Collectable>().type = Collectable.CollectableTypes.Cash;
                     break;
